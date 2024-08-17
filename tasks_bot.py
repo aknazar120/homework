@@ -5,19 +5,19 @@ import sqlite3
 import asyncio
 from config import token
 
-# Setup logging
+
 logging.basicConfig(level=logging.INFO)
 
-# Initialize bot and dispatcher
+
 bot = Bot(token=token)
 dp = Dispatcher()
 
-# Database connection setup
+
 def get_db_connection():
     connection = sqlite3.connect("tasks.db", check_same_thread=False)
     return connection
 
-# Create tasks table if not exists
+
 with get_db_connection() as connection:
     cursor = connection.cursor()
     cursor.execute("""
